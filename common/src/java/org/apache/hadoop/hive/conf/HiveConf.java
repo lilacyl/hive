@@ -5941,6 +5941,7 @@ public class HiveConf extends Configuration {
 
   public static int getIntVar(Configuration conf, ConfVars var) {
     assert (var.valClass == Integer.class) : var.varname;
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     if (var.altName != null) {
       return conf.getInt(var.varname, conf.getInt(var.altName, var.defaultIntVal));
     }
@@ -5950,38 +5951,49 @@ public class HiveConf extends Configuration {
   public static void setIntVar(Configuration conf, ConfVars var, int val) {
     assert (var.valClass == Integer.class) : var.varname;
     conf.setInt(var.varname, val);
+    System.out.println("[CTEST][SET-PARAM] " + var.varname);
+
   }
 
   public int getIntVar(ConfVars var) {
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return getIntVar(this, var);
   }
 
   public void setIntVar(ConfVars var, int val) {
     setIntVar(this, var, val);
+    System.out.println("[CTEST][SET-PARAM] " + var.varname);
+
   }
 
   public static long getTimeVar(Configuration conf, ConfVars var, TimeUnit outUnit) {
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return toTime(getVar(conf, var), getDefaultTimeUnit(var), outUnit);
   }
 
   public static void setTimeVar(Configuration conf, ConfVars var, long time, TimeUnit timeunit) {
     assert (var.valClass == String.class) : var.varname;
     conf.set(var.varname, time + stringFor(timeunit));
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
   }
 
   public long getTimeVar(ConfVars var, TimeUnit outUnit) {
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return getTimeVar(this, var, outUnit);
   }
 
   public void setTimeVar(ConfVars var, long time, TimeUnit outUnit) {
+    System.out.println("[CTEST][SET-PARAM] " + var.varname);
     setTimeVar(this, var, time, outUnit);
   }
 
   public static long getSizeVar(Configuration conf, ConfVars var) {
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return toSizeBytes(getVar(conf, var));
   }
 
   public long getSizeVar(ConfVars var) {
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return getSizeVar(this, var);
   }
 
@@ -5990,6 +6002,7 @@ public class HiveConf extends Configuration {
     if (var.validator instanceof TimeValidator) {
       inputUnit = ((TimeValidator)var.validator).getTimeUnit();
     }
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return inputUnit;
   }
 
@@ -6143,6 +6156,8 @@ public class HiveConf extends Configuration {
 
   public void setFloatVar(ConfVars var, float val) {
     setFloatVar(this, var, val);
+    System.out.println("[CTEST][SET-PARAM] " + var.varname);
+
   }
 
   public static boolean getBoolVar(Configuration conf, ConfVars var) {
