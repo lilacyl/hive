@@ -6254,7 +6254,7 @@ public class HiveConf extends Configuration {
           retval.substring(0, LOG_PREFIX_LENGTH - 1));
       retval = retval.substring(0, LOG_PREFIX_LENGTH - 1);
     }
-    System.out.println("[CTEST][GET-PARAM] " + var.varname);
+    System.out.println("[CTEST][GET-PARAM] " + retval);
     return retval;
   }
 
@@ -6744,7 +6744,6 @@ public class HiveConf extends Configuration {
     Map<String, String> systemProperties = getConfSystemProperties();
     for (Entry<String, String> systemProperty : systemProperties.entrySet()) {
       this.set(systemProperty.getKey(), systemProperty.getValue());
-      System.out.println("[CTEST][SET-PARAM] " + oneVar.varname);
     }
   }
 
@@ -6769,7 +6768,7 @@ public class HiveConf extends Configuration {
       if (overrides.get(oneVar.getKey()) != null) {
         if (overrides.get(oneVar.getKey()).length() > 0) {
           systemProperties.put(oneVar.getKey(), oneVar.getValue());
-          System.out.println("[CTEST][SET-PARAM] " + oneVar.varname);
+          System.out.println("[CTEST][SET-PARAM] " + oneVar.getKey());
         }
       }
     }
