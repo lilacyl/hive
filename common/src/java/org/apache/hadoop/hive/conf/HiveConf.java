@@ -5958,7 +5958,7 @@ public class HiveConf extends Configuration {
   public static void setIntVar(Configuration conf, ConfVars var, int val) {
     assert (var.valClass == Integer.class) : var.varname;
     conf.setInt(var.varname, val);
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname) + " ";
+    System.out.println("[CTEST][SET-PARAM] " + var.varname) + " ";
 
   }
 
@@ -5969,7 +5969,7 @@ public class HiveConf extends Configuration {
 
   public void setIntVar(ConfVars var, int val) {
     setIntVar(this, var, val);
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
 
   }
 
@@ -5990,7 +5990,7 @@ public class HiveConf extends Configuration {
   }
 
   public void setTimeVar(ConfVars var, long time, TimeUnit outUnit) {
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
     setTimeVar(this, var, time, outUnit);
   }
 
@@ -6122,7 +6122,7 @@ public class HiveConf extends Configuration {
   public static void setLongVar(Configuration conf, ConfVars var, long val) {
     assert (var.valClass == Long.class) : var.varname;
     conf.setLong(var.varname, val);
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
   }
 
   public long getLongVar(ConfVars var) {
@@ -6131,7 +6131,7 @@ public class HiveConf extends Configuration {
   }
 
   public void setLongVar(ConfVars var, long val) {
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
     setLongVar(this, var, val);
   }
 
@@ -6155,7 +6155,7 @@ public class HiveConf extends Configuration {
   public static void setFloatVar(Configuration conf, ConfVars var, float val) {
     assert (var.valClass == Float.class) : var.varname;
     conf.setFloat(var.varname, val);
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
   }
 
   public float getFloatVar(ConfVars var) {
@@ -6165,7 +6165,7 @@ public class HiveConf extends Configuration {
 
   public void setFloatVar(ConfVars var, float val) {
     setFloatVar(this, var, val);
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
 
   }
 
@@ -6189,7 +6189,7 @@ public class HiveConf extends Configuration {
   public static void setBoolVar(Configuration conf, ConfVars var, boolean val) {
     assert (var.valClass == Boolean.class) : var.varname;
     conf.setBoolean(var.varname, val);
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
   }
 
   public boolean getBoolVar(ConfVars var) {
@@ -6199,7 +6199,7 @@ public class HiveConf extends Configuration {
 
   public void setBoolVar(ConfVars var, boolean val) {
     setBoolVar(this, var, val);
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
   }
 
   public static String getVar(Configuration conf, ConfVars var) {
@@ -6270,12 +6270,12 @@ public class HiveConf extends Configuration {
   public static void setVar(Configuration conf, ConfVars var, String val) {
     assert (var.valClass == String.class) : var.varname;
     conf.set(var.varname, val, "setVar");
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
   }
   public static void setVar(Configuration conf, ConfVars var, String val,
     EncoderDecoder<String, String> encoderDecoder) {
     setVar(conf, var, encoderDecoder.encode(val));
-    System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
   }
 
   public static ConfVars getConfVars(String name) {
@@ -6312,7 +6312,7 @@ public class HiveConf extends Configuration {
   }
 
   public static void setQueryString(Configuration conf, String query) {
-    System.out.println("[CTEST][SET-PARAM]  " + "HIVEQUERYSTRING"  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + "HIVEQUERYSTRING"  + " ");
     setVar(conf, ConfVars.HIVEQUERYSTRING, query, EncoderDecoderFactory.URL_ENCODER_DECODER);
   }
   public void logVars(PrintStream ps) {
@@ -6528,7 +6528,7 @@ public class HiveConf extends Configuration {
       // set the default configs in whitelist
       whiteListParamsStr = getSQLStdAuthDefaultWhiteListPattern();
       setVar(ConfVars.HIVE_AUTHORIZATION_SQL_STD_AUTH_CONFIG_WHITELIST, whiteListParamsStr);
-      System.out.println("[CTEST][SET-PARAM]  " + "HIVE_AUTHORIZATION_SQL_STD_AUTH_CONFIG_WHITELIST"  + " ");
+      System.out.println("[CTEST][SET-PARAM] " + "HIVE_AUTHORIZATION_SQL_STD_AUTH_CONFIG_WHITELIST"  + " ");
     }
   }
 
@@ -6768,7 +6768,7 @@ public class HiveConf extends Configuration {
       if (System.getProperty(oneVar.varname) != null) {
         if (System.getProperty(oneVar.varname).length() > 0) {
           systemProperties.put(oneVar.varname, System.getProperty(oneVar.varname));
-          System.out.println("[CTEST][SET-PARAM]  " + oneVar.varname  + " ");
+          System.out.println("[CTEST][SET-PARAM] " + oneVar.varname  + " ");
 
         }
       }
@@ -6778,7 +6778,7 @@ public class HiveConf extends Configuration {
       if (overrides.get(oneVar.getKey()) != null) {
         if (overrides.get(oneVar.getKey()).length() > 0) {
           systemProperties.put(oneVar.getKey(), oneVar.getValue());
-          System.out.println("[CTEST][SET-PARAM]  " + oneVar.getKey()  + " ");
+          System.out.println("[CTEST][SET-PARAM] " + oneVar.getKey()  + " ");
         }
       }
     }
@@ -6796,7 +6796,7 @@ public class HiveConf extends Configuration {
         continue;
       }
       conf.set(var.varname, defaultValue);
-      System.out.println("[CTEST][SET-PARAM]  " + var.varname  + " ");
+      System.out.println("[CTEST][SET-PARAM] " + var.varname  + " ");
 
     }
   }
@@ -6810,7 +6810,7 @@ public class HiveConf extends Configuration {
       String oldValue = origProp.getProperty(oneProp);
       if (!StringUtils.equals(oldValue, newProp.getProperty(oneProp))) {
         ret.setProperty(oneProp, newProp.getProperty(oneProp));
-        System.out.println("[CTEST][SET-PARAM]  " + oneProp  + " ");
+        System.out.println("[CTEST][SET-PARAM] " + oneProp  + " ");
       }
     }
     return (ret);
@@ -6971,7 +6971,7 @@ public class HiveConf extends Configuration {
   }
 
   public static void setLoadMetastoreConfig(boolean loadMetastoreConfig) {
-    System.out.println("[CTEST][SET-PARAM]  " + loadMetastoreConfig  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + loadMetastoreConfig  + " ");
     HiveConf.loadMetastoreConfig = loadMetastoreConfig;
   }
 
@@ -6980,7 +6980,7 @@ public class HiveConf extends Configuration {
   }
 
   public static void setLoadHiveServer2Config(boolean loadHiveServer2Config) {
-    System.out.println("[CTEST][SET-PARAM]  " + loadHiveServer2Config  + " ");
+    System.out.println("[CTEST][SET-PARAM] " + loadHiveServer2Config  + " ");
     HiveConf.loadHiveServer2Config = loadHiveServer2Config;
   }
 
