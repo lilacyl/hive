@@ -6096,6 +6096,7 @@ public class HiveConf extends Configuration {
   public static long getLongVar(Configuration conf, ConfVars var) {
     assert (var.valClass == Long.class) : var.varname;
     if (var.altName != null) {
+      System.out.println("[CTEST][GET-PARAM] " + var.varname);
       return conf.getLong(var.varname, conf.getLong(var.altName, var.defaultLongVal));
     }
     System.out.println("[CTEST][GET-PARAM] " + var.varname);
@@ -6104,6 +6105,7 @@ public class HiveConf extends Configuration {
 
   public static long getLongVar(Configuration conf, ConfVars var, long defaultVal) {
     if (var.altName != null) {
+      System.out.println("[CTEST][GET-PARAM] " + var.varname);
       return conf.getLong(var.varname, conf.getLong(var.altName, defaultVal));
     }
     System.out.println("[CTEST][GET-PARAM] " + var.varname);
@@ -6128,18 +6130,18 @@ public class HiveConf extends Configuration {
 
   public static float getFloatVar(Configuration conf, ConfVars var) {
     assert (var.valClass == Float.class) : var.varname;
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     if (var.altName != null) {
       return conf.getFloat(var.varname, conf.getFloat(var.altName, var.defaultFloatVal));
     }
-    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return conf.getFloat(var.varname, var.defaultFloatVal);
   }
 
   public static float getFloatVar(Configuration conf, ConfVars var, float defaultVal) {
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     if (var.altName != null) {
       return conf.getFloat(var.varname, conf.getFloat(var.altName, defaultVal));
     }
-    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return conf.getFloat(var.varname, defaultVal);
   }
 
@@ -6162,18 +6164,18 @@ public class HiveConf extends Configuration {
 
   public static boolean getBoolVar(Configuration conf, ConfVars var) {
     assert (var.valClass == Boolean.class) : var.varname;
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     if (var.altName != null) {
       return conf.getBoolean(var.varname, conf.getBoolean(var.altName, var.defaultBoolVal));
     }
-    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return conf.getBoolean(var.varname, var.defaultBoolVal);
   }
 
   public static boolean getBoolVar(Configuration conf, ConfVars var, boolean defaultVal) {
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     if (var.altName != null) {
       return conf.getBoolean(var.varname, conf.getBoolean(var.altName, defaultVal));
     }
-    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return conf.getBoolean(var.varname, defaultVal);
   }
 
@@ -6208,15 +6210,16 @@ public class HiveConf extends Configuration {
 
   public static String getTrimmedVar(Configuration conf, ConfVars var) {
     assert (var.valClass == String.class) : var.varname;
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     if (var.altName != null) {
       return conf.getTrimmed(var.varname, conf.getTrimmed(var.altName, var.defaultStrVal));
     }
-    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return conf.getTrimmed(var.varname, var.defaultStrVal);
   }
 
   public static String[] getTrimmedStringsVar(Configuration conf, ConfVars var) {
     assert (var.valClass == String.class) : var.varname;
+    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     String[] result = conf.getTrimmedStrings(var.varname, (String[])null);
     if (result != null) {
       return result;
@@ -6227,7 +6230,6 @@ public class HiveConf extends Configuration {
         return result;
       }
     }
-    System.out.println("[CTEST][GET-PARAM] " + var.varname);
     return org.apache.hadoop.util.StringUtils.getTrimmedStrings(var.defaultStrVal);
   }
 
@@ -6245,6 +6247,7 @@ public class HiveConf extends Configuration {
 
   public String getLogIdVar(String defaultValue) {
     String retval = getVar(ConfVars.HIVE_LOG_TRACE_ID);
+    System.out.println("[CTEST][GET-PARAM] " + retval);
     if (StringUtils.EMPTY.equals(retval)) {
       LOG.debug("Using the default value passed in for log id: {}", defaultValue);
       retval = defaultValue;
@@ -6254,7 +6257,6 @@ public class HiveConf extends Configuration {
           retval.substring(0, LOG_PREFIX_LENGTH - 1));
       retval = retval.substring(0, LOG_PREFIX_LENGTH - 1);
     }
-    System.out.println("[CTEST][GET-PARAM] " + retval);
     return retval;
   }
 
@@ -6537,6 +6539,7 @@ public class HiveConf extends Configuration {
    */
   public ZoneId getLocalTimeZone() {
     String timeZoneStr = getVar(ConfVars.HIVE_LOCAL_TIME_ZONE);
+    System.out.println("[CTEST][GET-PARAM] " + ConfVars.HIVE_LOCAL_TIME_ZONE);
     return TimestampTZUtil.parseTimeZone(timeZoneStr);
   }
 
@@ -6814,7 +6817,6 @@ public class HiveConf extends Configuration {
    * @return the auxJars
    */
   public String getAuxJars() {
-    System.out.println("[CTEST][GET-PARAM] " + auxJars);
     return auxJars;
   }
 
@@ -6824,7 +6826,6 @@ public class HiveConf extends Configuration {
    */
   public void setAuxJars(String auxJars) {
     this.auxJars = auxJars;
-    System.out.println("[CTEST][SET-PARAM] " + auxJars);
     setVar(this, ConfVars.HIVEAUXJARS, auxJars);
   }
 
@@ -6836,6 +6837,7 @@ public class HiveConf extends Configuration {
     hiveSiteURL = location;
   }
 
+  
   public static void setHivemetastoreSiteUrl(URL location) {
     hivemetastoreSiteUrl = location;
   }
@@ -6888,7 +6890,6 @@ public class HiveConf extends Configuration {
       return;
     }
     String oldList = this.getVar(ConfVars.HIVE_CONF_RESTRICTED_LIST);
-    System.out.println("[CTEST][GET-PARAM] " + "HIVE_CONF_RESTRICTED_LIST");
     if (oldList == null || oldList.isEmpty()) {
       this.setVar(ConfVars.HIVE_CONF_RESTRICTED_LIST, restrictListStr);
     } else {
