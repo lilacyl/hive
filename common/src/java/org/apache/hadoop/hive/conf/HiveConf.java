@@ -5125,7 +5125,6 @@ public class HiveConf extends Configuration {
   }
 
   public void setQueryString(String query) {
-    System.out.println("[CTEST][SET-PARAM] " + query + " ");
     setQueryString(this, query);
   }
 
