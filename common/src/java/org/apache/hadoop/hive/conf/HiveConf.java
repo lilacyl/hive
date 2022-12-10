@@ -4769,7 +4769,7 @@ public class HiveConf extends Configuration {
   public static void setIntVar(Configuration conf, ConfVars var, int val) {
     assert (var.valClass == Integer.class) : var.varname;
     conf.setInt(var.varname, val);
-    System.out.println("[CTEST][SET-PARAM] " + var.varname + " ");
+    System.out.println("cd " + var.varname + " ");
   }
 
   public int getIntVar(ConfVars var) {
